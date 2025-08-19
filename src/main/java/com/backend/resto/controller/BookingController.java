@@ -3,5 +3,5 @@ package com.backend.resto.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class Table_Details_Controller {
+public class BookingController {
 }
