@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 @Table
 public class BookingDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "booking_seq_gen")
-    @SequenceGenerator(name = "booking_seq_gen", sequenceName = "booking_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bookingSeqGen")
+    @SequenceGenerator(name = "bookingSeqGen", sequenceName = "booking_seq", allocationSize = 1)
     private int bookingId;
     private int restId;
     private int userId;
