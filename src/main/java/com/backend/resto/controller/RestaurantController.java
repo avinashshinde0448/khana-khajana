@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/resto")
 public class RestaurantController {
@@ -17,6 +19,16 @@ public class RestaurantController {
         this.restaurantService=restaurantService;
     }
 
+
+    @GetMapping("/test")
+    public List<RestaurantDetails> getRestaurantDetails(){
+        return restaurantService.getRestaurantDetails();
+    }
+
+    @GetMapping("/test/{id}")
+    public ResponseEntity<RestaurantDetails> getRestaurantById(@PathVariable int id){
+        return new ResponseEntity<>(this.restaurantService.getRestaurantDetailsById(id),HttpStatus.OK);
+    }
     @PostMapping("/create")
     public ResponseEntity<String> createRestaurantDetails(@RequestBody RestaurantRequest restaurantRequest){
 

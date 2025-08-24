@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import com.backend.resto.entity.UserDetails;
 
+import java.util.List;
+
 @Slf4j
 @Service
 public class UserService {
@@ -54,4 +56,11 @@ public class UserService {
     }
 
 
+    public List<UserDetails> getuserservice() {
+         return userRepository.findAll();
+    }
+
+    public UserDetails getuserbyid(int id) {
+        return this.userRepository.findById(id).get();
+    }
 }

@@ -4,7 +4,10 @@ import com.backend.resto.entity.RestaurantDetails;
 import com.backend.resto.model.RestaurantRequest;
 import com.backend.resto.repository.RestaurantRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -43,5 +46,13 @@ public class RestaurantService {
 
         restaurantRepository.delete(restaurantDetails);
         return "deleted";
+    }
+
+    public List<RestaurantDetails> getRestaurantDetails() {
+        return restaurantRepository.findAll();
+    }
+
+    public RestaurantDetails getRestaurantDetailsById(int id) {
+        return restaurantRepository.findById(id).get();
     }
 }
