@@ -13,7 +13,6 @@ import java.util.List;
 @Slf4j
 @Service
 public class UserService {
-    private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
     private UserRepository userRepository;
     UserService(UserRepository userRepository){
@@ -42,6 +41,7 @@ public class UserService {
 
        // userDetails.setName(updateRequest.getName());
         userDetails.setPassword(updateRequest.getPassword());
+        userDetails.setEmail(updateRequest.getEmail());
         userRepository.save(userDetails);
         return "Updated";
     }
@@ -56,11 +56,11 @@ public class UserService {
     }
 
 
-    public List<UserDetails> getuserservice() {
+    public List<UserDetails> getUserService() {
          return userRepository.findAll();
     }
 
-    public UserDetails getuserbyid(int id) {
+    public UserDetails getUserById(int id) {
         return this.userRepository.findById(id).get();
     }
 }

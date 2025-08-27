@@ -29,8 +29,7 @@ public class RestaurantService {
     }
 
     public String updateRestoService(RestaurantRequest restaurantRequest) {
-        RestaurantDetails restaurantDetails=restaurantRepository.getByName(restaurantRequest.getName());
-
+        RestaurantDetails restaurantDetails=restaurantRepository.getById(restaurantRequest.getId());
         restaurantDetails.setAddress(restaurantRequest.getAddress());
         restaurantDetails.setNoOfTables(restaurantRequest.getNoOfTables());
         restaurantDetails.setCuisine(restaurantRequest.getCuisine());
