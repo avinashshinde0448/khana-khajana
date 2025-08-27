@@ -1,13 +1,21 @@
 package com.backend.resto.entity;
 
+import com.backend.resto.model.BookingStatus;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Entity
 @Table
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BookingDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "bookingSeqGen")
@@ -16,24 +24,23 @@ public class BookingDetails {
     @Column(name = "booking_id")
     private int bookingId;
 
-    @Column(name = "rest_id")
-    private int restId;
+    @ManyToOne
+    @JoinColumn(name = "booking_rest_fk" ,referencedColumnName = "rest_id")
+    private RestaurantDetails restId;
 
-    @Column(name = "user_id")
-    private int userId;
+    @ManyToOne
+    @JoinColumn(name = "booking_user_fk" ,referencedColumnName = "user_id")
+    private UserDetails userId;
 
     @Column(name = "table_id")
     private int tableId;
 
-    @Column(name = "open_time")
-    private String open_time;
-
-    @Column(name = "close_time")
-    private String close_time;
+    @Column(name = "date")
+    private LocalDate date;
 
     @Column(name = "status")
-    private String status;
+    private BookingStatus status;
 
     @Column(name = "people")
-    private String people;
+    private int people;
 }

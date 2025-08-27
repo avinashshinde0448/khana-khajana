@@ -17,7 +17,7 @@ public class UserDetails {
     @SequenceGenerator(name = "user_seq_gen", sequenceName = "user_seq",allocationSize = 1
     )
 
-
+    @Column(name = "user_id")
     private int userId;
 
     @Column(name = "name")

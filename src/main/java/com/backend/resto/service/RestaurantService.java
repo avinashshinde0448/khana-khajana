@@ -22,8 +22,6 @@ public class RestaurantService {
                 name(restaurantRequest.getName())
                 .address(restaurantRequest.getAddress())
                 .cuisine(restaurantRequest.getCuisine())
-                .open_time(restaurantRequest.getOpen_time())
-                .close_time(restaurantRequest.getClose_time())
                 .noOfTables(restaurantRequest.getNoOfTables()).build();
         restaurantRepository.save(restaurantDetails);
 
@@ -35,7 +33,7 @@ public class RestaurantService {
 
         restaurantDetails.setAddress(restaurantRequest.getAddress());
         restaurantDetails.setNoOfTables(restaurantRequest.getNoOfTables());
-
+        restaurantDetails.setCuisine(restaurantRequest.getCuisine());
         restaurantRepository.save(restaurantDetails);
         return "Updated";
 
