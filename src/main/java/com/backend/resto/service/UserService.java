@@ -21,7 +21,7 @@ public class UserService {
 
 
 
-    public String createuserregistration(RegistrationRequest createRequest) {
+    public String createUserRegistration(RegistrationRequest createRequest) {
         log.info("Registration Request {}",createRequest);
         UserDetails userDetails =new UserDetails();
         userDetails.setName(createRequest.getName());
@@ -34,7 +34,7 @@ public class UserService {
         return "Created";
     }
 
-    public String updateuserregistration(RegistrationRequest updateRequest) {
+    public String updateUserRegistration(RegistrationRequest updateRequest) {
         log.warn("Registration Update Request {}",updateRequest);
 
         UserDetails userDetails=userRepository.findByEmail(updateRequest.getEmail());
@@ -46,7 +46,7 @@ public class UserService {
         return "Updated";
     }
 
-    public String deleteuserregistration(String name) {
+    public String deleteUserRegistration(String name) {
         log.error("Delete User {}",name);
         UserDetails userDetails=userRepository.findByName(name);
         userRepository.delete(userDetails);

@@ -21,12 +21,12 @@ public class UserController {
 
     @GetMapping("/test")
     public List<UserDetails> getUserDetails(){
-        return userService.getuserservice();
+        return userService.getUserService();
     }
 
     @GetMapping("/test/{id}")
     public ResponseEntity<UserDetails> getUserDetailsPath(@PathVariable(name="id") int id){
-        return new ResponseEntity<>(userService.getuserbyid(id),HttpStatus.OK);
+        return new ResponseEntity<>(userService.getUserById(id),HttpStatus.OK);
     }
 
     @GetMapping("/test/{ownername}/param")
@@ -35,16 +35,16 @@ public class UserController {
     }
     @PostMapping("/create")
     public ResponseEntity<String> createUserRegistration(@RequestBody RegistrationRequest registrationRequest){
-        return new ResponseEntity<>(this.userService.createuserregistration(registrationRequest),HttpStatus.OK);
+        return new ResponseEntity<>(this.userService.createUserRegistration(registrationRequest),HttpStatus.OK);
     }
 
     @PutMapping("/update")
     public ResponseEntity<String> updateUserRegistration(@RequestBody RegistrationRequest registrationRequest){
-        return new ResponseEntity<>(this.userService.updateuserregistration(registrationRequest),HttpStatus.OK);
+        return new ResponseEntity<>(this.userService.updateUserRegistration(registrationRequest),HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{name}")
     public ResponseEntity<String> deleteUserRegistration(@PathVariable String name){
-        return new ResponseEntity<>(this.userService.deleteuserregistration(name),HttpStatus.OK);
+        return new ResponseEntity<>(this.userService.deleteUserRegistration(name),HttpStatus.OK);
     }
 }

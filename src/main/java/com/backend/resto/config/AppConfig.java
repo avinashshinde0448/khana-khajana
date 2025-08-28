@@ -11,7 +11,7 @@ public class AppConfig {
     @Bean
     public OpenAPI swaggerSetup(){
         return new OpenAPI().info(
-                new Info()
+                 new Info()
                         .title("Restaurant Mini project")
                         .description("Sample swagger setup")
         );
