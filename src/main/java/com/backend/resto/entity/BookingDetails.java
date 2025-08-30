@@ -33,14 +33,14 @@ public class BookingDetails {
     private UserDetails userId;
 
     @Column(name = "table_id")
-    private int tableId;
+    private Integer tableId;
 
     @Column(name = "date")
     private LocalDate date;
 
-    @Column(name = "status")
-    private BookingStatus status;
+  /*  @Column(name = "status")
+    private BookingStatus status;*/
 
     @Column(name = "people")
-    private int people;
+    private String people;
 }

@@ -9,11 +9,11 @@ import java.time.format.DateTimeFormatter;
 
 @Data
 public class BookingRequest {
-    private BookingStatus status;
-    private UserDetails user_id;
-    private RestaurantDetails rest_id;
+
+    private Integer user_id;
+    private Integer rest_id;
     private LocalDate date;
-    private int people;
+    private String people;
 
 
 
