@@ -20,12 +20,12 @@ public class BookingController {
         this.bookingService=bookingService;
     }
 
-    @GetMapping("/get")
+    @GetMapping("/test")
     public List<BookingDetails> getAllBookings(){
         return this.bookingService.getAllBookingsService();
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/test/{id}")
     public ResponseEntity<BookingDetails> getBookindById(@PathVariable(name = "id") int id){
         return new ResponseEntity<>(this.bookingService.getBookingByIdService(id),HttpStatus.OK);
     }
