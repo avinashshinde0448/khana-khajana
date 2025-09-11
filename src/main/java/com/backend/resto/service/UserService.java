@@ -1,0 +1,66 @@
+package com.backend.resto.service;
+
+import com.backend.resto.model.RegistrationRequest;
+import com.backend.resto.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import com.backend.resto.entity.UserDetails;
+
+import java.util.List;
+
+@Slf4j
+@Service
+public class UserService {
+
+    private UserRepository userRepository;
+    UserService(UserRepository userRepository){
+        this.userRepository=userRepository;
+    }
+
+
+
+    public String createUserRegistration(RegistrationRequest createRequest) {
+        log.info("Registration Request {}",createRequest);
+        UserDetails userDetails =new UserDetails();
+        userDetails.setName(createRequest.getName());
+        userDetails.setEmail(createRequest.getEmail());
+        userDetails.setPhoneNumber(createRequest.getPhoneNumber());
+        userDetails.setPassword(createRequest.getPassword());
+
+        userRepository.save(userDetails);
+
+        return "Created";
+    }
+
+    public String updateUserRegistration(RegistrationRequest updateRequest) {
+        log.warn("Registration Update Request {}",updateRequest);
+
+        UserDetails userDetails=userRepository.findByEmail(updateRequest.getEmail());
+
+       // userDetails.setName(updateRequest.getName());
+        userDetails.setPassword(updateRequest.getPassword());
+        userDetails.setEmail(updateRequest.getEmail());
+        userRepository.save(userDetails);
+        return "Updated";
+    }
+
+    public String deleteUserRegistration(String name) {
+        log.error("Delete User {}",name);
+        UserDetails userDetails=userRepository.findByName(name);
+        userRepository.delete(userDetails);
+        return "Deleted";
+
+
+    }
+
+
+    public List<UserDetails> getUserService() {
+         return userRepository.findAll();
+    }
+
+    public UserDetails getUserById(int id) {
+        return this.userRepository.findById(id).get();
+    }
+}
